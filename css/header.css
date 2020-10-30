@@ -1,0 +1,24 @@
+#Header{
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2vw;
+}
+#Header > h1{
+    color: black;
+    font-size: 1rem;
+    transition: 100ms;
+    
+}
+#Header > h1:hover{
+    color: darkred;
+}
+#Header > img{
+    width: 5vw;
+    transition: 500ms;
+}
+#Header > img:hover{
+    transform: rotate(20deg);
+}
+

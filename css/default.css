@@ -1,0 +1,17 @@
+:root{
+    --back: rgb(66, 66, 66);
+    --pock: rgb(245, 244, 244);
+}
+.inv{
+    display: none;
+}
+html{
+    margin: 0;
+}
+body{
+    margin: 0;
+}
+:root{
+    font-family: 'Press Start 2P', cursive;
+    background-color: var(--back);
+}
