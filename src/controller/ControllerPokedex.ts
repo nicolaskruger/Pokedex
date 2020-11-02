@@ -6,6 +6,7 @@ import {ProxyFactory} from '../service/ProxyFactory'
 import {Bind} from '../helper/Bind';
 import {ViewPokeShow} from '../view/ViewPokeShow'
 import {getNextPokemon} from '../model/Pokelist'
+import {PokemonServices} from '../service/PokemonServices'
 
 export class ControllerPokedex {
     private $ = document.querySelector.bind(document);
@@ -20,6 +21,8 @@ export class ControllerPokedex {
     private viewPokeS = new ViewPokeShow(this.$(".pokeS"),this.$(".pokeshow"));
 
     private current: number =0;
+
+    private services: PokemonServices = new PokemonServices();
 
     private input = [
         this.$("#name") as HTMLInputElement,
@@ -46,6 +49,13 @@ export class ControllerPokedex {
     constructor() {
         this.atlList();
         this.nextPokemon();
+        this.addDb();
+    }
+    addDb(){
+        this.services
+            .getLista()
+            .then((lis)=>this.pokedex.add(...lis))
+            .then(s=>{this.atlList();})
     }
     addScreen(){
         this.viewAdd.setInvisibity(false);
@@ -60,11 +70,15 @@ export class ControllerPokedex {
         event.preventDefault();
         let values = this.input.map(s=>s.value);
         let types = this.checkbox.filter(s=>s.checked).map(s=>s.id);
-        this.pokedex.add(new Pokemon(types,...values));
-        this.nextPokemon();
-        this.closeScreen();
-        this.atlList();
-        this.filterByType();
+        let pk = new Pokemon(types,...values)
+        this.services.add(pk)
+                    .then(s=>{
+                        this.pokedex.add(pk);
+                        this.nextPokemon();
+                        this.closeScreen();
+                        this.atlList();
+                        this.filterByType();
+                    })
     }
     clear(){
         this.input.forEach(s=>s.value='');
@@ -83,9 +97,17 @@ export class ControllerPokedex {
         this.viewPokeS.setMask(false)
     }
     deltePoke(){
-        this.pokedex.remove(this.current);
-        this.viewPokeS.setMask(true);
-        this.atlList();
+        this.services
+            .getKey()
+            .then(key=>{
+                this.services
+                    .delete(key[this.current])
+                    .then(s=>{
+                        this.pokedex.remove(this.current);
+                        this.viewPokeS.setMask(true);
+                        this.atlList();
+                    })
+            })
     }
     filterByName(){
         let val = this.filterText.value;

@@ -7,6 +7,7 @@ const Pokemon_1 = require("../model/Pokemon");
 const Bind_1 = require("../helper/Bind");
 const ViewPokeShow_1 = require("../view/ViewPokeShow");
 const Pokelist_1 = require("../model/Pokelist");
+const PokemonServices_1 = require("../service/PokemonServices");
 class ControllerPokedex {
     constructor() {
         this.$ = document.querySelector.bind(document);
@@ -17,6 +18,7 @@ class ControllerPokedex {
         this.pokedex = Bind_1.Bind.create(new Pokedex_1.Pokedex(), this.viewPokedex, 'add', 'remove', 'setInv');
         this.viewPokeS = new ViewPokeShow_1.ViewPokeShow(this.$(".pokeS"), this.$(".pokeshow"));
         this.current = 0;
+        this.services = new PokemonServices_1.PokemonServices();
         this.input = [
             this.$("#name"),
             this.$("#descr"),
@@ -37,6 +39,13 @@ class ControllerPokedex {
         ];
         this.atlList();
         this.nextPokemon();
+        this.addDb();
+    }
+    addDb() {
+        this.services
+            .getLista()
+            .then((lis) => this.pokedex.add(...lis))
+            .then(s => { this.atlList(); });
     }
     addScreen() {
         this.viewAdd.setInvisibity(false);
@@ -51,11 +60,15 @@ class ControllerPokedex {
         event.preventDefault();
         let values = this.input.map(s => s.value);
         let types = this.checkbox.filter(s => s.checked).map(s => s.id);
-        this.pokedex.add(new Pokemon_1.Pokemon(types, ...values));
-        this.nextPokemon();
-        this.closeScreen();
-        this.atlList();
-        this.filterByType();
+        let pk = new Pokemon_1.Pokemon(types, ...values);
+        this.services.add(pk)
+            .then(s => {
+            this.pokedex.add(pk);
+            this.nextPokemon();
+            this.closeScreen();
+            this.atlList();
+            this.filterByType();
+        });
     }
     clear() {
         this.input.forEach(s => s.value = '');
@@ -74,9 +87,17 @@ class ControllerPokedex {
         this.viewPokeS.setMask(false);
     }
     deltePoke() {
-        this.pokedex.remove(this.current);
-        this.viewPokeS.setMask(true);
-        this.atlList();
+        this.services
+            .getKey()
+            .then(key => {
+            this.services
+                .delete(key[this.current])
+                .then(s => {
+                this.pokedex.remove(this.current);
+                this.viewPokeS.setMask(true);
+                this.atlList();
+            });
+        });
     }
     filterByName() {
         let val = this.filterText.value;

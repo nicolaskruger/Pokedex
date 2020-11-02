@@ -6,12 +6,12 @@ export class Pokedex {
         return [...this.pokedex];
     }
     constructor() {
-        for(let i=0;i<3;i++){
-            this.pokedex.push(getNextPokemon());
-        }
+        // for(let i=0;i<3;i++){
+        //     this.pokedex.push(getNextPokemon());
+        // }
     }
-    add(pokemon:Pokemon){
-        this.pokedex.push(pokemon);
+    add(... pokemon:Pokemon[]){
+        pokemon.forEach(p=>this.pokedex.push(p));
     }
     remove(i:number){
         try {
