@@ -1,0 +1,9 @@
+.foot{
+    clear: both;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+.foot > img{
+    width: 10vw;
+}

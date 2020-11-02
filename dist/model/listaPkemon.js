@@ -1,0 +1,1 @@
+//# sourceMappingURL=listaPkemon.js.map

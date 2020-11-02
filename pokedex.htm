@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./css/default.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <script src="node_modules/systemjs/dist/system.js"></script>
     <title>Pokédex</title>
 </head>
 <body>
@@ -16,155 +18,130 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/1026px-Pok%C3%A9_Ball_icon.svg.png" alt="">
     </header>
     <main>
-        <nav class="inside">
-            <ul class="listaPokemon">
-                <li class="pokemon">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png" alt="">
-                    <h2>squardle</h2>
-                    <ul>
-                        <li>
-                            Water
-                        </li>
-                        <li>
-                            water
-                        </li>
-                    </ul>
-                </li>
-                <li class="pokemon">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png" alt="">
-                    <h2>squardle</h2>
-                    <ul>
-                        <li>
-                            Water
-                        </li>
-                        <li>
-                            water
-                        </li>
-                    </ul>
+        <div class="filter">
+            <label for="filter">filter</label>
+            <div>
+                
+                <input type="text" name="filter" id="filter">
+                <select name="types" id="types">
+                    <option value="none">none</option>
+                    <option value="grass">grass</option>
+                    <option value="poison">poison</option>
+                    <option value="fire">fire</option>
+                    <option value="water">water</option>
+                    <option value="bug">bug</option>
+                    <option value="flying">flying</option>
+                    <option value="normal">normal</option>
+                    <option value="electric">electric</option>
+                    <option value="ground">ground</option>
+                    
+                  </select>
 
-                </li>
-                <li class="pokemon">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png" alt="">
-                    <h2>squardle</h2>
-                    <ul>
-                        <li>
-                            Water
-                        </li>
-                        <li>
-                            water
-                        </li>
-                    </ul>
-                    
-                </li>
-                <li class="pokemon">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png" alt="">
-                    <h2>squardle</h2>
-                    <ul>
-                        <li>
-                            Water
-                        </li>
-                        <li>
-                            water
-                        </li>
-                    </ul>
-                    
-                </li>
-                <li class="pokemon">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png" alt="">
-                    <h2>squardle</h2>
-                    <ul>
-                        <li>
-                            Water
-                        </li>
-                        <li>
-                            water
-                        </li>
-                    </ul>
-                    
-                </li>
-                <li class="pokemon">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png" alt="">
-                    <h2>squardle</h2>
-                    <ul>
-                        <li>
-                            Water
-                        </li>
-                        <li>
-                            water
-                        </li>
-                    </ul>
-                    
-                </li>
-                <li class="pokemon">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png" alt="">
-                    <h2>squardle</h2>
-                    <ul>
-                        <li>
-                            Water
-                        </li>
-                        <li>
-                            water
-                        </li>
-                    </ul>
-                    
-                </li>
-                <li class="pokemon">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png" alt="">
-                    <h2>squardle</h2>
-                    <ul>
-                        <li>
-                            Water
-                        </li>
-                        <li>
-                            water
-                        </li>
-                    </ul>
-                    
-                </li>
-                <li class="pokemon">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png" alt="">
-                    <h2>squardle</h2>
-                    <ul>
-                        <li>
-                            Water
-                        </li>
-                        <li>
-                            water
-                        </li>
-                    </ul>
-                    
-                </li>
-                <li class="pokemon">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png" alt="">
-                    <h2>squardle</h2>
-                    <ul>
-                        <li>
-                            Water
-                        </li>
-                        <li>
-                            water
-                        </li>
-                    </ul>
-                    
-                </li>
-                <li class="pokemon">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png" alt="">
-                    <h2>squardle</h2>
-                    <ul>
-                        <li>
-                            Water
-                        </li>
-                        <li>
-                            water
-                        </li>
-                    </ul>
-                    
-                </li>
+            </div>
+        </div>
+        <nav class="inside">
+            
+            <ul class="listaPokemon">
+                
             </ul>
         </nav>
-    </main>
-    <footer>
+        <img id="add" src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/plus-512.png" alt="">
+        <div class="pokeshow inv">
+            <div class="pokeS ">
+                <div class="pokeImg">
+                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png" alt="">
+                    <ul>
+                        <li >
+                            Water
+                        </li>
+                        <li>
+                            water
+                        </li>
+                    </ul>
 
+                </div>
+                <div class="descricao">
+                    <h2>squardle</h2>
+                    <p>squardle é um pokemon legal</p>
+                </div>
+
+            </div>
+            <img class="close" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-512.png" alt="close">
+            <img class="delete" src="https://cdn.onlinewebfonts.com/svg/img_307766.png" alt="delete">
+
+        </div>
+        <div class="pokeadd inv">        
+            <form class="form">
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" value="Charmander" required autofocus/>        
+                </div>    
+
+                <div class="form-group">
+                    <label for="descr">description</label>
+                    <input id="descr" type="text" class="form-control" value="fire pokemon" required />
+                </div>
+                <div class="form-group">
+                    <label for="imagem">Imagem</label>
+                    <input type="url" id="imagem" class="form-control" value="https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png" required/>
+                </div>
+                <div class="form-group">
+                   
+                    <div>
+                        <input type="checkbox" id="grass" class="form-control" name=""/>
+                        <label for="grass">grass</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="poison" class="form-control" name=""/>
+                        <label for="poison">poison</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="fire" class="form-control" name="" checked/>
+                        <label for="fire">fire</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="water" class="form-control" name="" />
+                        <label for="water">water</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="bug" class="form-control" name=""/>
+                        <label for="bug">bug</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="flying" class="form-control" name=""/>
+                        <label for="flying">flying</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="normal" class="form-control" name=""/>
+                        <label for="normal">normal</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="electric" class="form-control" name=""/>
+                        <label for="electric">electric</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="ground" class="form-control" name=""/>
+                        <label for="ground">ground</label>
+                    </div>
+                    
+                </div>
+
+
+                <button class="btn btn-primary" type="submit">Add</button>
+            </form>
+            <img id="closeAdd" class="close" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-512.png" alt="close">
+        </div>
+    </main>
+    <footer class="foot">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1024px-International_Pok%C3%A9mon_logo.svg.png" alt="">
     </footer>
+    
+    <script>
+        System.defaultJSExtensions = true;
+        System.import('./dist/app').catch(function(err){
+            console.error(err);
+        });
+    </script>
 </body>
 </html>
